@@ -1,0 +1,25 @@
+<div class="container">
+    <form #loginForm="ngForm">
+        <div class="form-group">
+            
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="name" class="form-control" id="name" name="name" [(ngModel)]="emp.name" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" OnlyNumber="true" class="form-control" id="password" name="password"
+                    [(ngModel)]="emp.password" />
+            </div>
+            <div class="form-group">
+                <label for="phone">Designation</label>
+                <input type="text" class="form-control" id="designation" name="designation" [(ngModel)]="emp.designation" />
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create" name="btn1" (click)="submit('Create')" />
+        &nbsp;
+        <input type="submit" class="btn btn-primary" value="Delete" name="btn2" (click)="submit('Delete')" />
+        &nbsp;
+        <input type="submit" class="btn btn-primary" value="Update" name="btn3" (click)="submit('Update')" />
+    </form>
+</div>

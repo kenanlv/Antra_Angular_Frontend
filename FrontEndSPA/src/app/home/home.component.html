@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="col">
+        Clients
+        <ul class="list-group" *ngFor="let client of clients">
+
+            <li class="list-group-item">
+                <a class="btn btn-outline-primary btn-sm" [routerLink]="" (click)="client.clicked = !client.clicked">
+                    {{client.name}}
+                </a>
+                <a *ngIf="client.clicked">asbdfsd</a>
+            </li>
+
+        </ul>
+        Employees
+        <ul class="list-group" *ngFor="let emp of emps">
+            <li class="list-group-item">
+                <a class="btn btn-outline-primary btn-sm" [routerLink]="['']">
+                    {{emp.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
