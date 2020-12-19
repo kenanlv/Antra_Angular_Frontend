@@ -15,7 +15,10 @@ export class EmployeeService {
   createEmp(resource: any) : Observable<Employee> {
     return this.apiService.create('Employees/Add', resource);
   }
+  updateEmp(resource: any) : Observable<Employee> {
+    return this.apiService.update('Employees/Update', resource);
+  }
   deleteEmp(resource: any) : Observable<Employee> {
-    return this.apiService.delete('Employees/Delte', resource);
+    return this.apiService.delete('Employees/Delete/' + resource);
   }
 }

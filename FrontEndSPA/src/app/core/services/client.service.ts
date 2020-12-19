@@ -8,14 +8,17 @@ import { ApiService } from './api.service';
 })
 export class ClientService {
 
-  constructor(protected apiService:ApiService) { }
-  getAllClients() : Observable<Client[]> {
+  constructor(protected apiService: ApiService) { }
+  getAllClients(): Observable<Client[]> {
     return this.apiService.getAll('Clients/ListAll');
   }
-  createClient(resource: any) : Observable<Client> {
+  createClient(resource: any): Observable<Client> {
     return this.apiService.create('Clients/Add', resource);
   }
-  deleteClient(resource: any) : Observable<Client> {
-    return this.apiService.delete('Clients/Delte', resource);
+  updateClient(resource: any): Observable<Client> {
+    return this.apiService.update('Clients/Update', resource);
+  }
+  deleteClient(resource: any): Observable<Client> {
+    return this.apiService.delete('Clients/Delete/' + resource);
   }
 }

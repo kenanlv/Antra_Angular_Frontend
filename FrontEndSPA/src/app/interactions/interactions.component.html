@@ -1,0 +1,31 @@
+<div class="container">
+    <form #loginForm="ngForm">
+        <div class="form-group">
+            <div class="form-group">
+                <label for="name">Id</label>
+                <input type="name" class="form-control" id="ID" name="ID" [(ngModel)]="inter.id" />
+            </div>
+            <label for="lblEmail">Client ID</label>
+            <input type="number" class="form-control" id="cliId" aria-describedby="cliId" name="cliId"
+                [(ngModel)]="inter.clientId" />
+            <div class="form-group">
+                <label for="empId">Employee ID</label>
+                <input type="number" class="form-control" id="empId" name="empId" [(ngModel)]="inter.empId" />
+            </div>
+            <div class="form-group">
+                <label for="text">Remarks</label>
+                <input type="text" class="form-control" id="remarks" name="remarks" [(ngModel)]="inter.remarks" />
+            </div>
+            <div class="form-group">
+                <label for="phone">IntType</label>
+                <input type="text" maxlength="1" class="form-control" id="address" name="address" [(ngModel)]="inter.intType" />
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Create" name="btn1" (click)="submit('Create')"/>
+        &nbsp;
+        <input type="submit" class="btn btn-primary" value="Delete" name="btn2" (click)="submit('Delete')"/>
+        &nbsp;
+        <input type="submit" class="btn btn-primary" value="Update" name="btn3" (click)="submit('Update')"/>
+    </form>
+</div>
+

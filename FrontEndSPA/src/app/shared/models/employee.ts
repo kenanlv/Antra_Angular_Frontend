@@ -3,4 +3,5 @@ export interface Employee {
     name: string;
     password: string;
     designation: string;
+    clicked:boolean;
 }

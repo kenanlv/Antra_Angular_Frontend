@@ -11,7 +11,7 @@ import { Client } from '../shared/models/client';
 export class ClientsComponent implements OnInit {
   client: Client = {
     email: '',
-    id: 1,
+    id: 0,
     name: '',
     phones: '',
     address: '',
@@ -37,6 +37,26 @@ export class ClientsComponent implements OnInit {
           if (response) {
             this.router.navigate([this.returnUrl]);
           }
+        }, 
+        (err: any) => {
+          console.log(err);
+        }
+      );
+    } else if (buttonType === 'Update') {
+      this.clientService.updateClient(this.client).subscribe(
+        (response) => {
+          if (response) {
+            this.router.navigate([this.returnUrl]);
+          }
+        }, 
+        (err: any) => {
+          console.log(err);
+        }
+      )
+    } else {
+      this.clientService.deleteClient(this.client.id).subscribe(
+        (response) => {
+            this.router.navigate([this.returnUrl]);
         }, 
         (err: any) => {
           console.log(err);

@@ -1,25 +1,31 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientService } from '../core/services/client.service';
-import { EmployeeService } from '../core/services/employee.service';
-import { Employee } from '../shared/models/employee';
+import { InteractionService } from '../core/services/interaction.service';
+import { Interaction } from '../shared/models/interaction';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  selector: 'app-interactions',
+  templateUrl: './interactions.component.html',
+  styleUrls: ['./interactions.component.css']
 })
-export class EmployeesComponent implements OnInit {
-  emp: Employee = {
+export class InteractionsComponent implements OnInit {
+  pipe = new DatePipe('en-US');
+  now = Date.now();
+  d = new Date(this.now).toISOString();
+  myFormattedDate = this.pipe.transform(this.now,"medium");
+  
+  inter: Interaction = {
     id:0,
-    name:'',
-    password:'',
-    designation:'',
-    clicked:false
+    clientId:0,
+    empId:0,
+    intType:'x',
+    intDate:this.d,
+    remarks:''
   }
   buttonType: string;
   returnUrl: string;
-  constructor(private empService: EmployeeService, 
+  constructor(private interService: InteractionService, 
     private router: Router, 
     private route: ActivatedRoute) { }
 
@@ -27,12 +33,17 @@ export class EmployeesComponent implements OnInit {
     this.route.queryParams.subscribe(
       (params) => (this.returnUrl = params.returnUrl || '/')
     );
+    console.log(this.now);
+    console.log(this.d);
+
+    console.log(this.myFormattedDate);
+
   }
   submit(buttonType) {
-    console.log(this.emp);
+    console.log(this.inter);
     console.log(buttonType)
     if (buttonType === 'Create') {
-      this.empService.createEmp(this.emp).subscribe(
+      this.interService.createInteraction(this.inter).subscribe(
         (response) => {
           if (response) {
             this.router.navigate([this.returnUrl]);
@@ -43,7 +54,7 @@ export class EmployeesComponent implements OnInit {
         }
       );
     } else if (buttonType === 'Update') {
-      this.empService.updateEmp(this.emp).subscribe(
+      this.interService.updateInteraction(this.inter).subscribe(
         (response) => {
           if (response) {
             this.router.navigate([this.returnUrl]);
@@ -54,7 +65,7 @@ export class EmployeesComponent implements OnInit {
         }
       )
     } else {
-      this.empService.deleteEmp(this.emp.id).subscribe(
+      this.interService.deleteInteraction(this.inter.id).subscribe(
         (response) => {
             this.router.navigate([this.returnUrl]);
         }, 
@@ -64,4 +75,5 @@ export class EmployeesComponent implements OnInit {
       );
     }
   }
+
 }
