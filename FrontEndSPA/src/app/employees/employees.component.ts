@@ -10,17 +10,19 @@ import { Employee } from '../shared/models/employee';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+  errMsg: string;
+  errFlg: boolean = false;
   emp: Employee = {
-    id:0,
-    name:'',
-    password:'',
-    designation:'',
-    clicked:false
+    id: 0,
+    name: '',
+    password: '',
+    designation: '',
+    clicked: false
   }
   buttonType: string;
   returnUrl: string;
-  constructor(private empService: EmployeeService, 
-    private router: Router, 
+  constructor(private empService: EmployeeService,
+    private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -35,10 +37,13 @@ export class EmployeesComponent implements OnInit {
       this.empService.createEmp(this.emp).subscribe(
         (response) => {
           if (response) {
+            this.errFlg = false;
             this.router.navigate([this.returnUrl]);
           }
-        }, 
+        },
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       );
@@ -46,19 +51,25 @@ export class EmployeesComponent implements OnInit {
       this.empService.updateEmp(this.emp).subscribe(
         (response) => {
           if (response) {
+            this.errFlg = false;
             this.router.navigate([this.returnUrl]);
           }
-        }, 
+        },
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       )
     } else {
       this.empService.deleteEmp(this.emp.id).subscribe(
         (response) => {
-            this.router.navigate([this.returnUrl]);
-        }, 
+          this.errFlg = false;
+          this.router.navigate([this.returnUrl]);
+        },
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       );

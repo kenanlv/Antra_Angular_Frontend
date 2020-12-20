@@ -11,6 +11,8 @@ import { Client } from '../shared/models/client';
 export class ClientsComponent implements OnInit {
   now : number = Date.now();
   d : string = new Date(this.now).toISOString();
+  errMsg : string;
+  errFlg : boolean = false;
   client: Client = {
     email: '',
     id: 0,
@@ -38,10 +40,13 @@ export class ClientsComponent implements OnInit {
       this.clientService.createClient(this.client).subscribe(
         (response) => {
           if (response) {
+            this.errFlg = false;
             this.router.navigate([this.returnUrl]);
           }
         }, 
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       );
@@ -49,19 +54,26 @@ export class ClientsComponent implements OnInit {
       this.clientService.updateClient(this.client).subscribe(
         (response) => {
           if (response) {
+            this.errFlg = false;
             this.router.navigate([this.returnUrl]);
           }
         }, 
         (err: any) => {
+          this.errMsg = err.message;
+          this.errFlg = true;
           console.log(err);
+          console.log(this.errMsg.toString());
         }
       )
     } else {
       this.clientService.deleteClient(this.client.id).subscribe(
         (response) => {
+            this.errFlg = false;
             this.router.navigate([this.returnUrl]);
         }, 
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       );

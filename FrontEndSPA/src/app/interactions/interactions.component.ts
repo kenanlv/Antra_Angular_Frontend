@@ -10,20 +10,22 @@ import { Interaction } from '../shared/models/interaction';
   styleUrls: ['./interactions.component.css']
 })
 export class InteractionsComponent implements OnInit {
-  now : number = Date.now();
-  d : string = new Date(this.now).toISOString();
+  now: number = Date.now();
+  d: string = new Date(this.now).toISOString();
+  errMsg: string;
+  errFlg: boolean = false;
   inter: Interaction = {
-    id:0,
-    clientId:0,
-    empId:0,
-    intType:'x',
-    intDate:this.d,
-    remarks:''
+    id: 0,
+    clientId: 0,
+    empId: 0,
+    intType: 'x',
+    intDate: this.d,
+    remarks: ''
   }
   buttonType: string;
   returnUrl: string;
-  constructor(private interService: InteractionService, 
-    private router: Router, 
+  constructor(private interService: InteractionService,
+    private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -39,10 +41,13 @@ export class InteractionsComponent implements OnInit {
       this.interService.createInteraction(this.inter).subscribe(
         (response) => {
           if (response) {
+            this.errFlg = false;
             this.router.navigate([this.returnUrl]);
           }
-        }, 
+        },
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       );
@@ -50,19 +55,25 @@ export class InteractionsComponent implements OnInit {
       this.interService.updateInteraction(this.inter).subscribe(
         (response) => {
           if (response) {
+            this.errFlg = false;
             this.router.navigate([this.returnUrl]);
           }
-        }, 
+        },
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       )
     } else {
       this.interService.deleteInteraction(this.inter.id).subscribe(
         (response) => {
-            this.router.navigate([this.returnUrl]);
-        }, 
+          this.errFlg = false;
+          this.router.navigate([this.returnUrl]);
+        },
         (err: any) => {
+          this.errMsg = err;
+          this.errFlg = true;
           console.log(err);
         }
       );

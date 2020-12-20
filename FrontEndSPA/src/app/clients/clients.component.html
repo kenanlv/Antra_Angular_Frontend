@@ -2,6 +2,9 @@
     <div class="alert alert-success">
         <p align="center"><b>Clients Page</b></p>
     </div>
+    <div class="alert alert-danger" *ngIf="errFlg">
+        <p align="center"><b>{{errMsg}}</b></p>
+    </div>
     <form #loginForm="ngForm">
         <div class="form-group">
             <div class="form-group">
