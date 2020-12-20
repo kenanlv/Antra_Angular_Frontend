@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://cdn.iconscout.com/icon/free/png-512/c-programming-569564.png" alt="Markdownify" width="200"></a>
+  <a href="https://github.com/kenanlv"><img src="https://cdn.iconscout.com/icon/free/png-512/c-programming-569564.png" alt="CISFullStack" width="200"></a>
   <br>
   Client Information System (Front-End)
   <br>
