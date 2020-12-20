@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="alert alert-success">
+        <p align="center"><b>Employees Page</b></p>
+    </div>
     <form #loginForm="ngForm">
         <div class="form-group">
             <div class="form-group">
@@ -19,10 +22,10 @@
                 <input type="text" class="form-control" id="designation" name="designation" [(ngModel)]="emp.designation" />
             </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Create" name="btn1" (click)="submit('Create')" />
+        <input type="submit" class="btn btn-info" value="Create" name="btn1" (click)="submit('Create')" />
         &nbsp;
-        <input type="submit" class="btn btn-primary" value="Delete" name="btn2" (click)="submit('Delete')" />
+        <input type="submit" class="btn btn-primary" value="Update" name="btn2" (click)="submit('Update')" />
         &nbsp;
-        <input type="submit" class="btn btn-primary" value="Update" name="btn3" (click)="submit('Update')" />
+        <input type="submit" class="btn btn-danger" value="Delete" name="btn3" (click)="submit('Delete')" />
     </form>
 </div>

@@ -9,12 +9,15 @@ import { Client } from '../shared/models/client';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
+  now : number = Date.now();
+  d : string = new Date(this.now).toISOString();
   client: Client = {
     email: '',
     id: 0,
     name: '',
     phones: '',
     address: '',
+    addedOn: this.d,
     clicked: false
   }
   buttonType: string;

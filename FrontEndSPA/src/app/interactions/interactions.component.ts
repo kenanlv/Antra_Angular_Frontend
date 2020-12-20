@@ -10,11 +10,8 @@ import { Interaction } from '../shared/models/interaction';
   styleUrls: ['./interactions.component.css']
 })
 export class InteractionsComponent implements OnInit {
-  pipe = new DatePipe('en-US');
-  now = Date.now();
-  d = new Date(this.now).toISOString();
-  myFormattedDate = this.pipe.transform(this.now,"medium");
-  
+  now : number = Date.now();
+  d : string = new Date(this.now).toISOString();
   inter: Interaction = {
     id:0,
     clientId:0,
@@ -33,11 +30,7 @@ export class InteractionsComponent implements OnInit {
     this.route.queryParams.subscribe(
       (params) => (this.returnUrl = params.returnUrl || '/')
     );
-    console.log(this.now);
     console.log(this.d);
-
-    console.log(this.myFormattedDate);
-
   }
   submit(buttonType) {
     console.log(this.inter);

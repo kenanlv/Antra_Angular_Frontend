@@ -4,5 +4,6 @@ export interface Client {
     email: string;
     phones: string;
     address: string;
+    addedOn: string;
     clicked:boolean;
 }
