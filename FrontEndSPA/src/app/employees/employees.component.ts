@@ -42,7 +42,7 @@ export class EmployeesComponent implements OnInit {
           }
         },
         (err: any) => {
-          this.errMsg = err;
+          this.errMsg = err.message;
           this.errFlg = true;
           console.log(err);
         }
@@ -56,7 +56,7 @@ export class EmployeesComponent implements OnInit {
           }
         },
         (err: any) => {
-          this.errMsg = err;
+          this.errMsg = err.message;
           this.errFlg = true;
           console.log(err);
         }
@@ -68,7 +68,7 @@ export class EmployeesComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         (err: any) => {
-          this.errMsg = err;
+          this.errMsg = err.message;
           this.errFlg = true;
           console.log(err);
         }
