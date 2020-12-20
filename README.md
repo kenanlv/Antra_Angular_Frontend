@@ -8,7 +8,7 @@
 
 
 <p align="center"> 
-this is the front end part of the whole project, you could find backend <a href="https://github.com/kenanlv/KenanLv.ClientInfoSystem.BackEnd">here</a>
+this is the <b>front end</b> part of the whole project, you could find backend <a href="https://github.com/kenanlv/KenanLv.ClientInfoSystem.BackEnd">here</a>
 </p>
 <br>
 <p align="center">
