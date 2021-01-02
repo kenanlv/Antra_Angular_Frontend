@@ -13,6 +13,7 @@ export class ClientsComponent implements OnInit {
   d : string = new Date(this.now).toISOString();
   errMsg : string;
   errFlg : boolean = false;
+  tab: number = 1;
   client: Client = {
     email: '',
     id: 0,
@@ -61,8 +62,10 @@ export class ClientsComponent implements OnInit {
         (err: any) => {
           this.errMsg = err.message;
           this.errFlg = true;
+          if (err.status == 404) {
+            this.errMsg = "User Not Found";
+          }
           console.log(err);
-          console.log(this.errMsg.toString());
         }
       )
     } else {
@@ -74,6 +77,9 @@ export class ClientsComponent implements OnInit {
         (err: any) => {
           this.errMsg = err.message;
           this.errFlg = true;
+          if (err.status == 404) {
+            this.errMsg = "User Not Found";
+          }
           console.log(err);
         }
       );
